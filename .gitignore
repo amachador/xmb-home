@@ -1,0 +1,7 @@
+# Build output and local machine settings
+build/
+.gradle/
+local.properties
+.idea/
+*.iml
+.DS_Store

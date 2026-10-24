@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Music column; every other TV app goes in Video unless listed under Apps or hidden. -->
+    <string-array name="music_packages">
+        <item>com.spotify.tv.android</item>
+        <item>com.google.android.youtube.tvmusic</item>
+    </string-array>
+    <string-array name="apps_packages">
+        <item>com.android.vending</item>
+    </string-array>
+    <!-- Video column: these first, in this order, then the rest alphabetically. -->
+    <string-array name="video_first">
+        <item>com.google.android.youtube.tv</item>
+        <item>com.disney.disneyplus</item>
+        <item>com.amazon.amazonvideo.livingroom</item>
+    </string-array>
+    <string-array name="hidden_packages">
+        <item>com.android.tv.settings</item>
+        <item>com.mediatek.wwtv.tvcenter</item>
+        <!-- the author's other launcher -->
+        <item>com.oso.atvhome</item>
+    </string-array>
+</resources>
