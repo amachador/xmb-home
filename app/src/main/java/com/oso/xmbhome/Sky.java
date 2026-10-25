@@ -12,7 +12,7 @@ final class Sky {
     private static final int[] PALETTE = {
             0xF0E68C, 0xA52A2A, 0x6B8E23, 0x1F7F1F, 0xFFC0CB, 0xFF69B4, 0xC0C0C0, 0x228B22,
             0xD8BFD8, 0x800080, 0xADD8E6, 0x208080, 0x0000FF, 0x00008B, 0x800080, 0xEE82EE,
-            0x800000, 0xF0E68C, 0xB5703A, 0xA52A2A, 0xC81E28, 0xFF0000, 0xE0B0FF, 0xC0C0C0};
+            0x800000, 0xF0E68C, 0xB5703A, 0xA52A2A, 0xC81E28, 0xE60000, 0xE0B0FF, 0xC0C0C0};
     private static final float[] LUMINANCE = {
             0, 0, 0, 0, 0, 0, .13f, .27f, .4f, .53f, .67f, .8f, .93f, .8f, .67f, .53f, .4f, .27f, .13f, 0, 0, 0, 0, 0};
     private static final double BLEND_MINUTES = 3 * 24 * 60;
