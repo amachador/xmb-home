@@ -38,5 +38,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!-- The remote's Settings key goes to the stock launcher's panel, which only a privileged
+             app may answer; this key-only accessibility helper opens TV Settings instead. -->
+        <service
+            android:name=".KeyHelperService"
+            android:label="@string/key_helper_label"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/key_helper" />
+        </service>
     </application>
 </manifest>

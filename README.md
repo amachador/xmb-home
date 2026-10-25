@@ -27,9 +27,19 @@ brightness that follows the hour, black at night). Made with the
 - **Now Playing:** "Now Playing..." next to the clock while audio plays, and under the app that is
   probably playing it (the last one opened from this launcher).
 
-**No permissions at all**: no internet, no notification access, no background service. That is
-also why Now Playing can't show song titles: apps like Spotify only share them with apps holding
-notification access or with apps they allow-list.
+**No permissions at all**: no internet, no notification access. That is also why Now Playing can't
+show song titles: apps like Spotify only share them with apps holding notification access or with
+apps they allow-list.
+
+**Optional Settings-button helper:** with the stock launcher disabled, the remote's Settings button
+may do nothing (on the 55PUD7908 it asks the stock launcher for its panel). XMB Home includes a
+small accessibility service that only listens for that key and opens TV Settings; it reads no screen
+content and stays off unless you turn it on:
+
+```bash
+adb shell settings put secure enabled_accessibility_services com.oso.xmbhome/com.oso.xmbhome.KeyHelperService
+adb shell settings put secure accessibility_enabled 1
+```
 
 Uses about 55-60 MB while on screen.
 

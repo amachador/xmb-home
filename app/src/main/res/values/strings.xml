@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_helper_label">XMB Home key helper</string>
+    <string name="key_helper_description">Opens Settings when the remote\'s Settings key is pressed. Reads no screen content.</string>
+</resources>
