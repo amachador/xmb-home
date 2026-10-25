@@ -17,6 +17,13 @@ final class Sky {
             0, 0, 0, 0, 0, 0, .13f, .27f, .4f, .53f, .67f, .8f, .93f, .8f, .67f, .53f, .4f, .27f, .13f, 0, 0, 0, 0, 0};
     private static final double BLEND_MINUTES = 3 * 24 * 60;
 
+    /** Debug builds only: a fixed date and time to show (for screenshots), or null for the clock. */
+    static LocalDateTime preview;
+
+    static LocalDateTime now() {
+        return preview != null ? preview : LocalDateTime.now();
+    }
+
     /** Month colour as 0xRRGGBB. */
     static int colour(LocalDateTime now) {
         LocalDateTime prev = null, next = null;

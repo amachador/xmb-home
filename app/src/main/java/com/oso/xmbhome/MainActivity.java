@@ -105,12 +105,37 @@ public class MainActivity extends Activity implements NowPlaying.Listener {
         dp = getResources().getDisplayMetrics().density;
         buildViews();
         nowPlaying = new NowPlaying(this, this);
+        applyPreview(getIntent());
         registerReceiver(screenReceiver, new IntentFilter(Intent.ACTION_SCREEN_ON), RECEIVER_NOT_EXPORTED);
         IntentFilter pk = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
         pk.addAction(Intent.ACTION_PACKAGE_REMOVED);
         pk.addAction(Intent.ACTION_PACKAGE_CHANGED);
         pk.addDataScheme("package");
         registerReceiver(packageReceiver, pk, RECEIVER_NOT_EXPORTED);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        applyPreview(intent);
+    }
+
+    /**
+     * Debug builds: show a fixed date and time, for screenshots of other seasons and hours.
+     * adb shell am start -n com.oso.xmbhome/.MainActivity --es preview_time 2026-06-27T15:00
+     * (an empty value goes back to the real clock).
+     */
+    private void applyPreview(Intent intent) {
+        if ((getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) == 0) return;
+        String t = intent == null ? null : intent.getStringExtra("preview_time");
+        if (t == null) return;
+        try {
+            Sky.preview = t.isEmpty() ? null : LocalDateTime.parse(t);
+        } catch (java.time.format.DateTimeParseException e) {
+            return;
+        }
+        if (clock != null) updateClock();
+        if (wave != null) wave.refreshSky();
     }
 
     @Override
@@ -621,7 +646,7 @@ public class MainActivity extends Activity implements NowPlaying.Listener {
     // ---------------------------------------------------------------- clock and now playing
 
     private void updateClock() {
-        clock.setText(LocalDateTime.now().format(CLOCK));
+        clock.setText(Sky.now().format(CLOCK));
     }
 
     @Override

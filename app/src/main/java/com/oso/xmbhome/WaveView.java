@@ -78,7 +78,7 @@ final class WaveView extends View implements Choreographer.FrameCallback {
 
     /** Called on start and every minute (TIME_TICK). */
     void refreshSky() {
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = Sky.now();
         int c = Sky.colour(now);
         float b = Sky.brightness(now);
         if (c == colour && b == brightness && getWidth() > 0 && bg.getShader() != null) return;
