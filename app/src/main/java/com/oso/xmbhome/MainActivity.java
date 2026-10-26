@@ -367,7 +367,11 @@ public class MainActivity extends Activity implements NowPlaying.Listener {
         r.sub.setPadding(px(6), 0, px(6), 0);
         marquee(r.sub);
         r.sub.setVisibility(View.GONE);
-        texts.addView(r.sub);
+        // The title keeps 6 dp of padding so its glow isn't clipped; pull the subtitle up into it,
+        // leaving a 1 dp gap under the name.
+        LinearLayout.LayoutParams slp = new LinearLayout.LayoutParams(-2, -2);
+        slp.topMargin = px(-5);
+        texts.addView(r.sub, slp);
         FrameLayout.LayoutParams tlp = new FrameLayout.LayoutParams(px(560), -2, Gravity.CENTER_VERTICAL);
         tlp.leftMargin = px(96 + 16 - 6);
         r.view.addView(texts, tlp);
